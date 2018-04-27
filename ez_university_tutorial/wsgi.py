@@ -1,5 +1,5 @@
 """
-WSGI config for ez_university_tutorial project.
+WSGI config for ez_university project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
