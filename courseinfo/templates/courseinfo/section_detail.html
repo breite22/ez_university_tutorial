@@ -1,0 +1,67 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Section - {{ section }}
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="row">
+            <div class="offset-by-two eight columns">
+                <h2>{{ section }}</h2>
+                <ul class="inline">
+                    {% if perms.courseinfo.change_section %}
+                    <li>
+                        <a href="{{ section.get_update_url }}"
+                           class="button">
+                            Edit Section</a></li>
+                    {% endif %}
+                    {% if perms.courseinfo.delete_section %}
+                    <li>
+                        <a href="{{ section.get_delete_url }}"
+                           class="button">
+                            Delete Section</a></li>
+                    {% endif %}
+                </ul>
+
+                <section>
+                    <h3>Section Name</h3>
+                    <p>{{ section.section_name }}</p>
+
+                    <h3>Semester</h3>
+                    <a href="{{ semester.get_absolute_url }}">{{ semester }}</a>
+
+                    <h3>Course</h3>
+                    <a href="{{ course.get_absolute_url }}">{{ course }}</a>
+                </section>
+
+                <section>
+                    <h3>Instructors</h3>
+                    <ul>
+                        {% for instructor in instructor_list %}
+                            <li>
+                                <a href="{{ instructor.get_absolute_url }}">{{ instructor }}</a>
+                            </li>
+                        {% empty %}
+                            <li><em>There are currently no instructors for this section.</em></li>
+                        {% endfor %}
+                    </ul>
+                </section>
+                <section>
+                    <h3>Students</h3>
+                    <ul>
+                        {% for student in student_list %}
+                            <li>
+                                <a href="{{ student.get_absolute_url }}">{{ student }}</a>
+                            </li>
+                        {% empty %}
+                            <li><em>There are currently no students registered for this section.</em></li>
+                        {% endfor %}
+                    </ul>
+                </section>
+
+            </div>
+        </div> <!-- row -->
+
+    </article>
+{% endblock %}

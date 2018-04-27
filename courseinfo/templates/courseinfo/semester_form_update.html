@@ -1,0 +1,22 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Update Semester
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="offset-by-two eight columns">
+    <form
+        action="{{ semester.get_update_url }}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button
+                class="button-primary"
+                type="submit">
+                Update Semester</button>
+    </form>
+   </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'courseinfo/base.html' %}
+
+{% block title %}
+    Create Instructor
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="offset-by-two eight columns">
+    <form
+        action="{% url 'courseinfo_instructor_create_urlpattern'%}"
+        method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button
+                class="button-primary"
+                type="submit">
+                Create Instructor</button>
+    </form>
+
+{% endblock %}
